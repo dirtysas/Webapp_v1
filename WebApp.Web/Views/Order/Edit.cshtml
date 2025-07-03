@@ -1,0 +1,26 @@
+@model WebApp.DAL.Entities.Order
+
+<h2>Редактировать заказ</h2>
+<form method="post" action="/Order/Save">
+    <input type="hidden" name="Id" value="@Model.Id" />
+
+    <div class="mb-3">
+        <label class="form-label">Пользователь</label>
+        <input type="text" class="form-control"
+               value="@(Model.User != null ? Model.User.FullName : "Не указан")"
+               disabled />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Цена</label>
+        <input type="number" name="Price" class="form-control" value="@Model.Price" step="0.01" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Дата</label>
+        <input type="date" name="Date" class="form-control"
+               value="@(Model.Date.ToString("yyyy-MM-dd"))" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Сохранить</button>
+</form>

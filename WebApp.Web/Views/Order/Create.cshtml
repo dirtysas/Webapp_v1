@@ -1,0 +1,32 @@
+@model WebApp.DAL.Entities.Order
+
+<h2>Редактировать заказ</h2>
+<form method="post" action="/Order/Save">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <div class="mb-3">
+        <label class="form-label">Пользователь</label>
+        <select name="UserId" class="form-control" required>
+            @foreach (var user in ViewBag.Users)
+            {
+            if (user.Id == Model.UserId)
+            {
+            <option value="@user.Id" selected>@user.FullName</option>
+            }
+            else
+            {
+            <option value="@user.Id">@user.FullName</option>
+            }
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Цена</label>
+        <input type="number" name="Price" class="form-control" value="@Model.Price" step="0.01" required />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Дата</label>
+        <input type="date" name="Date" class="form-control" value="@Model.Date.ToString(" yyyy-MM-dd")" required />
+    </div>
+    <button type="submit" class="btn btn-success">Сохранить</button>
+    <a href="/Order/Index" class="btn btn-secondary">Отмена</a>
+</form>

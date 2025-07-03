@@ -1,0 +1,27 @@
+@model List<WebApp.DAL.Entities.User>
+
+    <h2>Пользователи</h2>
+    <a href="/User/Create" class="btn btn-success mb-3">Добавить нового</a>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ФИО</th>
+                <th>Дата рождения</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+            <tr>
+                <td>@user.FullName</td>
+                <td>@user.BirthDate.ToShortDateString()</td>
+                <td>
+                    <a href="/User/Edit/@user.Id" class="btn btn-primary btn-sm">Редактировать</a>
+                    <a href="/User/Delete/@user.Id" class="btn btn-danger btn-sm">Удалить</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>

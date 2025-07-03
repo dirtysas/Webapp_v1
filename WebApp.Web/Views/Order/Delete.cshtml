@@ -1,0 +1,13 @@
+@using WebApp.DAL
+
+@model WebApp.DAL.Entities.Order
+
+
+<h2>Удалить заказ?</h2>
+<p>Вы уверены, что хотите удалить заказ для пользователя <strong>@Model.User.FullName</strong>?</p>
+
+<form method="post" action="/Order/DeleteConfirmed">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <button type="submit" class="btn btn-danger">Удалить</button>
+    <a href="/Order/Index" class="btn btn-secondary">Отмена</a>
+</form>
